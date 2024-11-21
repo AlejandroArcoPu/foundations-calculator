@@ -45,6 +45,7 @@ let operation = "";
 let firstOperand = "";
 let secondOperand = "";
 let operator = "";
+let result = "";
 
 const cleanVars = () => {
   operation = "";
@@ -52,16 +53,21 @@ const cleanVars = () => {
   firstOperand = "";
   secondOperand = "";
   operator = "";
+  result = "";
+};
+
+const cleanInput = () => {
+  input.value = "";
 };
 
 const cleanResult = () => {
-  input.value = "";
+  result = "";
 };
 
 const giveResult = () => {
   input.value = operate(operator.textContent, firstOperand, secondOperand);
   cleanVars();
-  firstOperand = input.value;
+  result = input.value;
 };
 
 const changeSign = (number) => {
@@ -73,6 +79,9 @@ const hasDecimal = (number) => {
 };
 
 const formDecimals = () => {
+  if (result) {
+    cleanResult();
+  }
   if (secondOperand) {
     if (!hasDecimal(secondOperand)) {
       input.value = secondOperand + ".";
@@ -102,7 +111,7 @@ const showInDisplay = (e) => {
   if (operator) operator.style.opacity = 1;
 
   if (currentValue === "C") {
-    cleanResult();
+    cleanInput();
     cleanVars();
   } else if (currentValue === "%") {
     if (secondOperand) {
@@ -123,8 +132,14 @@ const showInDisplay = (e) => {
   } else if (currentValue === ".") {
     formDecimals();
   } else if (currentValue === "=") {
-    if (operator && firstOperand && secondOperand) giveResult();
+    if (operator && firstOperand && secondOperand) {
+      giveResult();
+    }
   } else if (currentValue.match(digitsRegex)) {
+    if (result) {
+      cleanResult();
+      input.value = "";
+    }
     if (!operator) firstOperand += currentValue;
     else {
       if (!secondOperand) input.value = "";
@@ -132,6 +147,10 @@ const showInDisplay = (e) => {
     }
     input.value += currentValue;
   } else if (currentValue.match(operatorsRegex)) {
+    if (result) {
+      firstOperand = result;
+      cleanResult();
+    }
     if (operator && firstOperand && secondOperand) {
       giveResult();
     }
