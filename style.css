@@ -33,13 +33,15 @@ body {
 }
 
 input {
-  height: 70px;
+  height: 90px;
   border: none;
   background-color: #505050;
   color: white;
   width: 100%;
+  padding-top: 30px;
+  padding-right: 15px;
+  padding-left: 15px;
   font-size: 32px;
-  padding: 20px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   cursor: auto;
@@ -53,8 +55,8 @@ input:focus {
 
 button {
   color: white;
-  width: 66px;
-  height: 66px;
+  width: 64px;
+  height: 64px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 0;
   margin: 0;
@@ -65,11 +67,11 @@ button {
 }
 
 button:hover {
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .operator {
-  background-color: #f99235;
+  background-color: #ff7a05;
 }
 
 .number {
@@ -82,13 +84,9 @@ button:hover {
 
 #equal {
   border-bottom-right-radius: 20px;
-  flex-grow: 0.18;
+  flex-grow: 0.23;
 }
 
 #zero {
   border-bottom-left-radius: 20px;
-}
-
-#divide {
-  flex-grow: 0.18;
 }
