@@ -40,6 +40,7 @@ const round = (number) => {
 };
 
 let containerCalculator = document.querySelector(".operations");
+let backspace = document.querySelector(".backspace");
 let input = document.querySelector(".text");
 let operation = "";
 let firstOperand = "";
@@ -166,8 +167,22 @@ const showInDisplay = (e) => {
       operator.style.opacity = 0.8;
     }
   }
-
-  console.log(firstOperand, secondOperand);
 };
 
 containerCalculator.addEventListener("click", showInDisplay);
+
+backspace.addEventListener("click", () => {
+  if (input.textContent) {
+    if (secondOperand) {
+      input.textContent = input.textContent.slice(0, -1);
+      secondOperand = input.textContent;
+    } else {
+      input.textContent = input.textContent.slice(0, -1);
+      firstOperand = input.textContent;
+    }
+  } else {
+    cleanInput();
+    cleanResult();
+    cleanVars();
+  }
+});

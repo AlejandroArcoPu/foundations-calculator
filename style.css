@@ -95,7 +95,7 @@ body {
 }
 
 .backspace {
-  height: 30px;
+  height: auto;
   cursor: pointer;
   border: none;
   background-color: #505050;
