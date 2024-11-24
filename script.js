@@ -39,7 +39,7 @@ const round = (number) => {
   return Math.round(number * 100) / 100;
 };
 
-let containerCalculator = document.querySelector(".calculator");
+let containerCalculator = document.querySelector(".operations");
 let input = document.querySelector(".text");
 let operation = "";
 let firstOperand = "";

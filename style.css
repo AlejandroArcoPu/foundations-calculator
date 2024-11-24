@@ -14,7 +14,7 @@ body {
 
 .calculator {
   width: 300px;
-  height: 400px;
+  height: 420px;
   border: 3px solid white;
   border-radius: 20px;
   box-shadow: 0px 0px 1px 7px wheat;
@@ -23,33 +23,46 @@ body {
   align-items: center;
 }
 
+.content {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: #505050;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
+.operations {
+  width: 100%;
+}
+
 .one,
 .two,
 .three,
 .four,
 .five {
-  width: 100%;
   display: flex;
 }
 
 .text {
-  height: 90px;
-  border: none;
-  background-color: #505050;
+  height: 100px;
   color: white;
   width: 100%;
-  padding-top: 30px;
   padding-right: 15px;
   padding-left: 15px;
   font-size: 32px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  cursor: auto;
   box-sizing: border-box;
-  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-button {
+.special,
+.operator,
+.number {
   color: white;
   width: 64px;
   height: 64px;
@@ -62,7 +75,10 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.special:hover,
+.operator:hover,
+.number:hover,
+.backspace:hover {
   opacity: 0.8;
 }
 
@@ -76,6 +92,17 @@ button:hover {
 
 .special {
   background-color: #7d7c84;
+}
+
+.backspace {
+  height: 30px;
+  cursor: pointer;
+  border: none;
+  background-color: #505050;
+}
+
+.backspace img {
+  width: 30px;
 }
 
 #equal {
