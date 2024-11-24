@@ -32,7 +32,7 @@ body {
   display: flex;
 }
 
-input {
+.text {
   height: 90px;
   border: none;
   background-color: #505050;
@@ -47,10 +47,6 @@ input {
   cursor: auto;
   box-sizing: border-box;
   text-align: right;
-}
-
-input:focus {
-  outline: none;
 }
 
 button {

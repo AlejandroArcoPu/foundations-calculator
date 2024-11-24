@@ -40,7 +40,7 @@ const round = (number) => {
 };
 
 let containerCalculator = document.querySelector(".calculator");
-let input = document.querySelector("input");
+let input = document.querySelector(".text");
 let operation = "";
 let firstOperand = "";
 let secondOperand = "";
@@ -57,7 +57,7 @@ const cleanVars = () => {
 };
 
 const cleanInput = () => {
-  input.value = "";
+  input.textContent = "";
 };
 
 const cleanResult = () => {
@@ -65,13 +65,17 @@ const cleanResult = () => {
 };
 
 const giveResult = () => {
-  input.value = operate(operator.textContent, firstOperand, secondOperand);
+  input.textContent = operate(
+    operator.textContent,
+    firstOperand,
+    secondOperand
+  );
   cleanVars();
-  result = input.value;
+  result = input.textContent;
 };
 
 const changeSign = (number) => {
-  return number > 0 ? "-" + number : number;
+  return number > 0 ? "-" + number : number.replace("-", "");
 };
 
 const hasDecimal = (number) => {
@@ -84,23 +88,23 @@ const formDecimals = () => {
   }
   if (secondOperand) {
     if (!hasDecimal(secondOperand)) {
-      input.value = secondOperand + ".";
-      secondOperand = input.value;
+      input.textContent = secondOperand + ".";
+      secondOperand = input.textContent;
     } else {
       alert("You already have a decimal number!");
     }
   } else if (firstOperand && !operator) {
     if (!hasDecimal(firstOperand)) {
-      input.value = firstOperand + ".";
-      firstOperand = input.value;
+      input.textContent = firstOperand + ".";
+      firstOperand = input.textContent;
     } else {
       alert("You already have a decimal number!");
     }
   } else if (firstOperand && operator) {
-    input.value = "0.";
+    input.textContent = "0.";
     secondOperand = "0.";
   } else {
-    input.value = "0.";
+    input.textContent = "0.";
     firstOperand = "0.";
   }
 };
@@ -113,21 +117,22 @@ const showInDisplay = (e) => {
   if (currentValue === "C") {
     cleanInput();
     cleanVars();
+    cleanResult();
   } else if (currentValue === "%") {
     if (secondOperand) {
-      input.value = percentage(input.value);
-      secondOperand = input.value;
+      input.textContent = percentage(input.textContent);
+      secondOperand = input.textContent;
     } else {
-      input.value = percentage(input.value);
-      firstOperand = input.value;
+      input.textContent = percentage(input.textContent);
+      firstOperand = input.textContent;
     }
   } else if (currentValue === "+/-") {
     if (secondOperand) {
-      input.value = changeSign(secondOperand);
-      secondOperand = input.value;
+      input.textContent = changeSign(input.textContent);
+      secondOperand = input.textContent;
     } else {
-      input.value = changeSign(firstOperand);
-      firstOperand = input.value;
+      input.textContent = changeSign(input.textContent);
+      firstOperand = input.textContent;
     }
   } else if (currentValue === ".") {
     formDecimals();
@@ -138,14 +143,14 @@ const showInDisplay = (e) => {
   } else if (currentValue.match(digitsRegex)) {
     if (result) {
       cleanResult();
-      input.value = "";
+      input.textContent = "";
     }
     if (!operator) firstOperand += currentValue;
     else {
-      if (!secondOperand) input.value = "";
+      if (!secondOperand) input.textContent = "";
       secondOperand += currentValue;
     }
-    input.value += currentValue;
+    input.textContent += currentValue;
   } else if (currentValue.match(operatorsRegex)) {
     if (result) {
       firstOperand = result;
